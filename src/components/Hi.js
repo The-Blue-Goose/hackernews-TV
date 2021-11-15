@@ -1,5 +1,5 @@
 import React, { component } from 'react'
-import { AUTH_TOKEN } from '../constants'
+//import { AUTH_TOKEN } from '../constants'
 
 const name = 'William H. Cerhelle III';
 
