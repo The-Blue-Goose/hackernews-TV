@@ -50,7 +50,8 @@ class Link extends Component {
             <a href={this.props.link.url} target="_blank" rel="noreferrer">{this.props.link.description}</a>
           </div>
           <div className="f6 lh-copy gray">
-            {this.props.link.votes.length} votes | by{' '}
+            {this.props.link.votes.length} votes ~ first vote by{' '}
+            {this.props.link.votes[0].user.name} | by{' '}
             {this.props.link.postedBy
               ? this.props.link.postedBy.name
               : 'Unknown'}{' '}
