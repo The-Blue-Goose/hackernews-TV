@@ -51,8 +51,7 @@ class Link extends Component {
           </div>
           <div className="f6 lh-copy gray">
             {this.props.link.votes.length} votes ~ first vote by {' '}
-            {(this.props.link.votes[0].user.id>-1) ? this.props.link.votes[0].user.name : "N/A"}
-            {this.props.link.votes[0].user.name} | by{' '}
+            {this.props.link.votes[0] ? this.props.link.votes[0].user.name : "N/A"} | by{' '}
             {this.props.link.postedBy
               ? this.props.link.postedBy.name
               : 'Unknown'}{' '}
