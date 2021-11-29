@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { APP_SECRET, getUserId } = require('../utils');
+const { APP_SECRET } = require('../utils');
 
 function post(parent, args, context, info) {
   const { userId } = context;
@@ -66,9 +66,9 @@ async function vote(parent, args, context, info) {
     }
   });
 
-  if (Boolean(vote)) {
-    throw new Error(
-      `Already voted for link: ${args.linkId}`
+   if (Boolean(vote)) {
+     throw new Error(
+       `Already voted for link: ${args.linkId}`
     );
   }
 
