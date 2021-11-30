@@ -4,7 +4,6 @@ import { useQuery } from 'react-apollo'
 import { useHistory } from 'react-router';
 import gql from 'graphql-tag'
 import { LINKS_PER_PAGE } from '../constants';
-
 export const FEED_QUERY = gql`
   query FeedQuery(
     $take: Int
@@ -74,6 +73,7 @@ const LinkList = () => {
   } = useQuery(FEED_QUERY, {
     variables: getQueryVariables(isNewPage, page)
   });
+
 
   return (
     <>
