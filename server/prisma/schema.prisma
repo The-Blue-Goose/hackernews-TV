@@ -7,6 +7,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
+
 model Link {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
@@ -22,7 +23,7 @@ model User {
   name     String
   email    String @unique
   password String
-  group    Int @default(1)
+  group    Int    @default(1)
   links    Link[]
   votes    Vote[]
 }
