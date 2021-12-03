@@ -40,7 +40,7 @@ type User {
   name: String!
   email: String!
   links: [Link!]!
-  group: Int
+  group: Int!
   age: Int!
 }
 
