@@ -41,6 +41,7 @@ type User {
   email: String!
   links: [Link!]!
   group: Int
+  age: Int!
 }
 
 type Link {
