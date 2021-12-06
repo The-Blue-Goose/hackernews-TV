@@ -59,11 +59,12 @@ class Link extends Component {
             {timeDifferenceForDate(this.props.link.createdAt)}  {' '}
   {/* below ternary operator check if any votes, shows last voter */}
             {this.props.link.votes[0] 
-              ? ' ____vote ids: '+this.props.link.votes[0].id
+              ? ' | vote ids: '+this.props.link.votes[0].id
               : ' '}{' '}
             {this.props.link.votes[0] 
               ? this.props.link.votes[this.props.link.votes.length-1].id
-              : ' '}{' '} 
+              : ' '}{' '} | #
+              {this.props.link.tag}
           </div>
         </div>
       </div>

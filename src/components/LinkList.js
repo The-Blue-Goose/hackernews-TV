@@ -13,6 +13,7 @@ export const FEED_QUERY = gql`
     feed(take: $take, skip: $skip, orderBy: $orderBy) {
       id
       links {
+        tag
         id
         url
         description
