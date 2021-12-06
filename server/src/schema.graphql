@@ -46,6 +46,7 @@ type Link {
   id: ID!
   description: String!
   url: String!
+  tag: String!
   postedBy: User
   votes: [Vote!]!
   createdAt: DateTime!
