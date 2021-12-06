@@ -63,9 +63,7 @@ class Link extends Component {
               : ' '}{' '}
             {this.props.link.votes[0] 
               ? this.props.link.votes[this.props.link.votes.length-1].id
-              : ' '}{' '} | Group: 
-              {this.props.link.postedBy.group}{' '} | Age: 
-              {this.props.link.postedBy.age}{' '}
+              : ' '}{' '} 
           </div>
         </div>
       </div>
