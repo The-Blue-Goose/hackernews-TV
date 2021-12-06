@@ -17,8 +17,6 @@ export const FEED_QUERY = gql`
         url
         description
         postedBy {
-          group
-          age
           id
           name
         }
