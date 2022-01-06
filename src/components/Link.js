@@ -64,7 +64,7 @@ class Link extends Component {
             {this.props.link.votes[0] 
               ? this.props.link.votes[this.props.link.votes.length-1].id
               : ' '}{' '} | #
-              {this.props.link.tag}
+              {this.props.link.tag}{' '}
           </div>
         </div>
       </div>
