@@ -5,6 +5,7 @@ import LinkList from './LinkList'
 import CreateLink from './CreateLink'
 import Login from './Login'
 import Search from './Search'
+import Untitled from './Untitled'
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/search' component={Search} />
             <Route exact path='/top' component={LinkList} />
+            <Route exact path='/to[' component={Untitled} />
             <Route exact path='/new/:page' component={LinkList} />
           </Switch>
         </div>
