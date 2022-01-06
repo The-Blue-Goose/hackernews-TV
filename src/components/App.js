@@ -19,7 +19,7 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route exact path='/search' component={Search} />
             <Route exact path='/top' component={LinkList} />
-            <Route exact path='/to[' component={Untitled} />
+            <Route exact path='/Untitled' component={Untitled} />
             <Route exact path='/new/:page' component={LinkList} />
           </Switch>
         </div>
