@@ -3,7 +3,7 @@ import User from './User'
 import { useQuery } from 'react-apollo'
 import { useHistory } from 'react-router';
 import gql from 'graphql-tag'
-import { LINKS_PER_PAGE } from '../constants';
+import { USERS_PER_PAGE } from '../constants';
 export const FEED_QUERY = gql`
   query FeedQuery(
     $take: Int
@@ -20,13 +20,13 @@ export const FEED_QUERY = gql`
   }
 `;
 
-const getLinksToRender = (data) => {
+const getUsersToRender = (data) => {
   return data.feed.users;
 };
 
 const getQueryVariables = (isNewPage, page) => {
-  const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0;
-  const take = isNewPage ? LINKS_PER_PAGE : 100;
+  const skip = isNewPage ? (page - 1) * USERS_PER_PAGE : 0;
+  const take = isNewPage ? USERS_PER_PAGE : 100;
   const orderBy = { createdAt: 'desc' };
   return { take, skip, orderBy };
 };
@@ -43,7 +43,7 @@ const UserList = () => {
     pageIndexParams[pageIndexParams.length - 1]
   );
 
-  const pageIndex = page ? (page - 1) * LINKS_PER_PAGE : 0;
+  const pageIndex = page ? (page - 1) * USERS_PER_PAGE : 0;
 
   const {
     data,
@@ -60,7 +60,7 @@ const UserList = () => {
       {error && <pre>{JSON.stringify(error, null, 2)}</pre>}
       {data && (
         <>
-          {getLinksToRender(data).map(
+          {getUsersToRender(data).map(
             (user, index) => (
               <User
                 key={user.id}

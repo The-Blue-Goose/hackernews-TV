@@ -3,7 +3,7 @@ import Quote from './Quote'
 import { useQuery } from 'react-apollo'
 import { useHistory } from 'react-router';
 import gql from 'graphql-tag'
-import { USERS_PER_PAGE } from '../constants';
+import { LINKS_PER_PAGE } from '../constants';
 export const FEED_QUERY = gql`
   query FeedQuery(
     $take: Int
@@ -13,25 +13,23 @@ export const FEED_QUERY = gql`
     feed(take: $take, skip: $skip, quoteOrderBy: $quoteOrderBy) {
       id
       quotes{
-        discription
-        postedBy
         id
+        description
       }
       count
     }
   }
 `;
 
-const getUsersToRender = (isNewPage, data) => {
-  if (isNewPage) {
-    return data.feed.quotes;
-  }
+const getQuotesToRender = (data) => {
+  return data.feed.quotes;
 };
 
 const getQueryVariables = (isNewPage, page) => {
-  const skip = isNewPage ? (page - 1) * USERS_PER_PAGE : 0;
-  const take = isNewPage ? USERS_PER_PAGE : 100;
-  return { take, skip };
+  const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0;
+  const take = isNewPage ? LINKS_PER_PAGE : 100;
+  const orderBy = { createdAt: 'desc' };
+  return { take, skip, orderBy };
 };
 
 const QuoteList = () => {
@@ -46,7 +44,7 @@ const QuoteList = () => {
     pageIndexParams[pageIndexParams.length - 1]
   );
 
-  const pageIndex = page ? (page - 1) * USERS_PER_PAGE : 0;
+  const pageIndex = page ? (page - 1) * LINKS_PER_PAGE : 0;
 
   const {
     data,
@@ -63,42 +61,14 @@ const QuoteList = () => {
       {error && <pre>{JSON.stringify(error, null, 2)}</pre>}
       {data && (
         <>
-          {getUsersToRender(isNewPage, data).map(
+          {getQuotesToRender(data).map(
             (quote, index) => (
               <Quote
                 key={quote.id}
-                quote={quote.discription}
+                quote={quote}
                 index={index + pageIndex}
               />
             )
-          )}
-          {isNewPage && (
-            <div className="flex ml4 mv3 gray">
-              <div
-                className="pointer mr2"
-                onClick={() => {
-                  if (page > 1) {
-                    history.push(`/new/${page - 1}`);
-                  }
-                }}
-              >
-                Previous
-              </div>
-              <div
-                className="pointer"
-                onClick={() => {
-                  if (
-                    page <=
-                    data.feed.count / USERS_PER_PAGE
-                  ) {
-                    const nextPage = page + 1;
-                    history.push(`/new/${nextPage}`);
-                  }
-                }}
-              >
-                Next
-              </div>
-            </div>
           )}
         </>
       )}

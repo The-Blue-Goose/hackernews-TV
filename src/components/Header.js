@@ -18,18 +18,26 @@ class Header extends Component {
             top
           </Link>
           <div className="ml1">|</div>
-          <Link to="/search" className="ml1 no-underline black">
-            search
-          </Link>
-          <div className="ml1">|</div>
           <Link to="/UserList" className="ml1 no-underline black">
             users
+          </Link>
+          <div className="ml1">|</div>
+          <Link to="/QuoteList" className="ml1 no-underline black">
+            quotes
+          </Link>
+          <div className="ml1">|</div>
+          <Link to="/search" className="ml1 no-underline black">
+            search
           </Link>
           {authToken && (
             <div className="flex">
               <div className="ml1">|</div>
               <Link to="/create" className="ml1 no-underline black">
-                submit
+                submit link
+              </Link>
+              <div className="ml1">|</div>
+              <Link to="/create" className="ml1 no-underline black">
+                submit Quote
               </Link>
             </div>
           )}
