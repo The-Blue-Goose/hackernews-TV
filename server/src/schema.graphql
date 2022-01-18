@@ -6,6 +6,7 @@ type Query {
     take: Int
     orderBy: LinkOrderByInput
     userOrderBy: UserOrderByInput
+    quoteOrderBy: QuoteOrderByInput
   ): Feed!
 }
 
@@ -13,6 +14,7 @@ type Feed {
   id: ID!
   links: [Link!]!
   users: [User!]!
+  quotes: [Quote!]!
   count: Int!
 }
 
@@ -32,6 +34,13 @@ type Subscription {
   newVote: Vote
 }
 
+type Quote {
+  id: ID!
+  postedBy: User!
+  createdAt: DateTime!
+  description: String!
+}
+
 type AuthPayload {
   token: String
   user: User
@@ -42,6 +51,7 @@ type User {
   name: String!
   email: String!
   links: [Link!]!
+  quotes: [Quote!]!
 }
 
 type Link {
@@ -70,6 +80,12 @@ input UserOrderByInput {
   name: Sort
   email: Sort
   id: Sort
+}
+
+input QuoteOrderByInput {
+  postedBy: Sort
+  id: Sort
+  createdAt: Sort
 }
 
 enum Sort {
