@@ -20,7 +20,19 @@ const newVote = {
   },
 }
 
+function newQuoteSubscribe(parent, args, context, info) {
+  return context.pubsub.asyncIterator("NEW_QUOTE")
+}
+
+const newQuote = {
+  subscribe: newQuoteSubscribe,
+  resolve: payload => {
+    return payload
+  },
+}
+
 module.exports = {
   newLink,
-  newVote
+  newVote,
+  newQuote
 }

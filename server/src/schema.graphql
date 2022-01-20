@@ -20,6 +20,7 @@ type Feed {
 
 type Mutation {
   post(url: String!, description: String!, tag: String!): Link!
+  postQuote(description: String!): Quote!
   signup(
     email: String!
     password: String!
@@ -31,6 +32,7 @@ type Mutation {
 
 type Subscription {
   newLink: Link
+  newQuote: Quote
   newVote: Vote
 }
 

@@ -7,6 +7,7 @@ import Login from './Login'
 import Search from './Search'
 import UserList from './UserList'
 import QuoteList from './QuoteList'
+import CreateQuote from './CreateQuote'
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route exact path='/top' component={LinkList} />
             <Route exact path='/UserList' component={UserList} />
             <Route exact path='/QuoteList' component={QuoteList} />
+            <Route exact path='/createQuote' component={CreateQuote} />
             <Route exact path='/new/:page' component={LinkList} />
           </Switch>
         </div>
