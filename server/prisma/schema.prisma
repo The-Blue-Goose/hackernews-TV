@@ -12,7 +12,7 @@ model Quote {
   postedBy    User     @relation(fields: [postedById], references: [id])
   postedById  Int
   createdAt   DateTime @default(now())
-  description String
+  description String   @default("There was an error posting this quote")
 }
 
 model Link {

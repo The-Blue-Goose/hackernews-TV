@@ -18,6 +18,20 @@ function post(parent, args, context, info) {
   return newLink;
 }
 
+function postQuote(parent, args, context, info) {
+  const { userId } = context;
+
+  const newQuote = context.prisma.quote.create({
+    data: {
+      description: args.description,
+      postedBy: { connect: { id: userId } }
+    }
+  });
+  context.pubsub.publish('NEW_QUOTE', newQuote);
+
+  return newQuote;
+}
+
 async function signup(parent, args, context, info) {
   const password = await bcrypt.hash(args.password, 10);
   const user = await context.prisma.user.create({
@@ -85,6 +99,7 @@ async function vote(parent, args, context, info) {
 
 module.exports = {
   post,
+  postQuote,
   signup,
   login,
   vote

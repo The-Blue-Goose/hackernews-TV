@@ -7,6 +7,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Quote {
+  id          Int      @id @default(autoincrement())
+  postedBy    User     @relation(fields: [postedById], references: [id])
+  postedById  Int
+  createdAt   DateTime @default(now())
+  description String   @default("There was an error posting this quote")
+}
+
 model Link {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
@@ -24,6 +32,7 @@ model User {
   email    String @unique
   password String
   links    Link[]
+  quotes   Quote[]
   votes    Vote[]
 }
 
