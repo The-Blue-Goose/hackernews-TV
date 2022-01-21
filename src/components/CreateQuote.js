@@ -34,7 +34,7 @@ class CreateQuote extends Component {
         <Mutation
           mutation={POST_MUTATION}
           variables={{ description }}
-          onCompleted={() => this.props.history.push('/new/1')}
+          onCompleted={() => this.props.history.push('/QuoteList')}
           update={(store, { data: { postQuote } }) => {
             const first = LINKS_PER_PAGE
             const skip = 0

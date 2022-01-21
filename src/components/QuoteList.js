@@ -15,6 +15,10 @@ export const FEED_QUERY = gql`
       quotes{
         id
         description
+        postedBy {
+          id
+          name
+        }
       }
       count
     }
