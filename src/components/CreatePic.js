@@ -52,7 +52,7 @@ class CreatePic extends Component {
         <Mutation
           mutation={POST_MUTATION}
           variables={{ description, url, tag }}
-          onCompleted={() => this.props.history.push('/new/1')}
+          onCompleted={() => this.props.history.push('/PicList')}
           update={(store, { data: { post } }) => {
             const first = LINKS_PER_PAGE
             const skip = 0

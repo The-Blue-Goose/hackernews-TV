@@ -8,6 +8,7 @@ class Pic extends Component {
 </div>
 
         <div className="ml1">
+          <div><img src={this.props.pic.url} alt={this.props.pic.description}></img></div>
           <div>
           <a href={this.props.pic.url} target="_blank" rel="noreferrer">{this.props.pic.description}</a>
           </div>
