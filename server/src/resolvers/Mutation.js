@@ -18,6 +18,22 @@ function post(parent, args, context, info) {
   return newLink;
 }
 
+function postPic(parent, args, context, info) {
+  const { userId } = context;
+
+  const newPic = context.prisma.pic.create({
+    data: {
+      url: args.url,
+      tag: args.tag,
+      description: args.description,
+      postedBy: { connect: { id: userId } }
+    }
+  });
+  context.pubsub.publish('NEW_PIC', newPic);
+
+  return newPic;
+}
+
 function postQuote(parent, args, context, info) {
   const { userId } = context;
 
@@ -99,6 +115,7 @@ async function vote(parent, args, context, info) {
 
 module.exports = {
   post,
+  postPic,
   postQuote,
   signup,
   login,

@@ -31,6 +31,13 @@ async function feed(parent, args, context, info) {
     quoteOrderBy: args.quoteOrderBy
   });
 
+  const pics = await context.prisma.pic.findMany({
+    where,
+    skip: args.skip,
+    take: args.take,
+    linkOrderBy: args.linkOrderBy
+  });
+
   const count = await context.prisma.link.count({ where });
 
   return {
@@ -38,6 +45,7 @@ async function feed(parent, args, context, info) {
     links,
     users,
     quotes,
+    pics,
     count
   };
 }

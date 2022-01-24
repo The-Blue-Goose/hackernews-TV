@@ -7,7 +7,9 @@ import Login from './Login'
 import Search from './Search'
 import UserList from './UserList'
 import QuoteList from './QuoteList'
+import PicList from './PicList'
 import CreateQuote from './CreateQuote'
+import CreatePic from './CreatePic'
 
 class App extends Component {
   render() {
@@ -23,7 +25,9 @@ class App extends Component {
             <Route exact path='/top' component={LinkList} />
             <Route exact path='/UserList' component={UserList} />
             <Route exact path='/QuoteList' component={QuoteList} />
+            <Route exact path='/picList' component={PicList} />
             <Route exact path='/createQuote' component={CreateQuote} />
+            <Route exact path='/createPic' component={CreatePic} />
             <Route exact path='/new/:page' component={LinkList} />
           </Switch>
         </div>

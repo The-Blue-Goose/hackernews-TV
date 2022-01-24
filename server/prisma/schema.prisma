@@ -26,6 +26,16 @@ model Link {
   votes       Vote[]
 }
 
+model Pic {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  description String
+  url         String
+  tag         String   @default("Tag")
+  postedBy    User     @relation(fields: [postedById], references: [id])
+  postedById  Int
+}
+
 model User {
   id       Int    @id @default(autoincrement())
   name     String
@@ -34,6 +44,7 @@ model User {
   links    Link[]
   quotes   Quote[]
   votes    Vote[]
+  pics     Pic[]
 }
 
 model Vote {

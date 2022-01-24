@@ -26,6 +26,10 @@ class Header extends Component {
             quotes
           </Link>
           <div className="ml1">|</div>
+          <Link to="/PicList" className="ml1 no-underline black">
+            Pics
+          </Link>
+          <div className="ml1">|</div>
           <Link to="/search" className="ml1 no-underline black">
             search
           </Link>
@@ -38,6 +42,10 @@ class Header extends Component {
               <div className="ml1">|</div>
               <Link to="/createQuote" className="ml1 no-underline black">
                 submit Quote
+              </Link>
+              <div className="ml1">|</div>
+              <Link to="/createPic" className="ml1 no-underline black">
+                submit Pic
               </Link>
             </div>
           )}
